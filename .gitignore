@@ -1,4 +1,1 @@
-/openresty/docker/nginx/certs/cert.pem
-/openresty/docker/nginx/certs/chain.pem
-/openresty/docker/nginx/certs/privkey.pem
-/openresty/docker/nginx/certs/fullchain.pem
+/openresty/docker/nginx/certs
