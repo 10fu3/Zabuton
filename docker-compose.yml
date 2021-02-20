@@ -1,0 +1,12 @@
+services:
+  gohttp:
+    build: .
+    container_name: api
+    expose:
+      - 8080
+    command: ./start
+    networks:
+      - virtual
+networks:
+  virtual:
+    external: true

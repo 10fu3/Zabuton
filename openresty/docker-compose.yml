@@ -1,0 +1,35 @@
+version: '3'
+services:
+  ng:
+    container_name: ng
+    image: nginx:latest
+    expose:
+      - 80
+    networks:
+      - virtual
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+      - base
+  nginx:
+    build: ./docker/nginx
+    container_name: proxy
+    image: proxy
+    depends_on:
+      - redis
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 443:443
+      - 80:80
+    networks:
+      - virtual
+      - base
+networks:
+  virtual:
+    external: true
+  base:
+    external: true
