@@ -1,10 +1,25 @@
 services:
-  gohttp:
+  zabuton-backend:
     build: .
-    container_name: api
+    container_name: zabuton
     expose:
       - 8080
     command: ./start
+    networks:
+      - virtual
+  db:
+    image: mariadb
+    container_name: db
+    expose:
+      - 8081
+    restart: always
+    volumes:
+      - "./mysql:/var/lib/mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=zabuton_db
+      - MYSQL_USER=
+      - MYSQL_PASSWORD=
     networks:
       - virtual
 networks:
